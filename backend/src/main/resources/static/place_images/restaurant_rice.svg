@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Rice dish placeholder">
+  <defs>
+    <linearGradient id="riceBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7a6136"/>
+      <stop offset="1" stop-color="#c4b177"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#riceBg)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.94">
+    <path d="M182 236h276a138 138 0 0 1-138 106 138 138 0 0 1-138-106Z"/>
+    <path d="M160 236h320"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity="0.9">
+    <path d="M244 214c8-34 44-52 76-52s68 18 76 52"/>
+    <path d="M270 190c10-22 34-34 50-34s40 12 50 34"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" opacity="0.72">
+    <path d="M470 132v104"/>
+    <path d="M470 236c-18 0-30-14-30-30"/>
+  </g>
+</svg>

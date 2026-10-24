@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Noodle dish placeholder">
+  <defs>
+    <linearGradient id="noodleBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8d4a24"/>
+      <stop offset="1" stop-color="#c98a4b"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#noodleBg)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.94">
+    <path d="M176 226h288a144 144 0 0 1-144 112 144 144 0 0 1-144-112Z"/>
+    <path d="M152 226h336"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity="0.9">
+    <path d="M232 214c26-30 74-30 100 0"/>
+    <path d="M244 196c22-26 66-26 88 0"/>
+    <path d="M258 180c18-20 52-20 70 0"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" opacity="0.72">
+    <path d="M446 118l92 96"/>
+    <path d="M470 100l92 96"/>
+  </g>
+</svg>

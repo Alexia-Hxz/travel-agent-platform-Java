@@ -1,0 +1,30 @@
+# 后端镜像：多阶段构建（Maven 编译 → JRE 运行）
+FROM maven:3.9-eclipse-temurin-17 AS build
+WORKDIR /build
+
+# 先只拷 pom，利用层缓存把依赖下载单独缓存
+COPY pom.xml .
+RUN mvn -q -B -DskipTests dependency:go-offline
+
+COPY src ./src
+RUN mvn -q -B -DskipTests package
+
+FROM eclipse-temurin:17-jre
+WORKDIR /app
+
+# 时区与字符集：数据库里存的是 UTC，容器也用 UTC，避免"服务器本地时间"混进来
+ENV TZ=UTC \
+    LANG=C.UTF-8 \
+    SERVER_PORT=8000
+
+RUN groupadd -r app && useradd -r -g app app \
+    && mkdir -p /app/data && chown -R app:app /app
+USER app
+
+COPY --from=build /build/target/travel-agent-backend-0.1.0.jar /app/app.jar
+
+EXPOSE 8000
+HEALTHCHECK --interval=10s --timeout=5s --start-period=40s --retries=10 \
+    CMD ["bash", "-c", "exec 3<>/dev/tcp/127.0.0.1/8000 && echo -e 'GET /api/v1/health HTTP/1.0\\r\\n\\r\\n' >&3 && head -n1 <&3 | grep -q '200'"]
+
+ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75", "-jar", "/app/app.jar"]

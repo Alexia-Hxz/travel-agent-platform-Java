@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Hotel placeholder">
+  <defs>
+    <linearGradient id="hotelBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3d5f58"/>
+      <stop offset="1" stop-color="#7ba49a"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#hotelBg)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.94">
+    <path d="M168 274V160"/>
+    <path d="M168 208h300a32 32 0 0 1 32 32v34"/>
+    <path d="M168 238h332"/>
+    <path d="M500 274v-34"/>
+  </g>
+  <rect x="186" y="214" width="76" height="22" rx="11" fill="#ffffff" opacity="0.94"/>
+  <g fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" opacity="0.55">
+    <path d="M286 208h150"/>
+  </g>
+</svg>

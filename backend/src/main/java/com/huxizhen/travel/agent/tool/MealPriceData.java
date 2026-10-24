@@ -1,0 +1,391 @@
+package com.huxizhen.travel.agent.tool;
+
+// 由 tools/gen_java_data.py 从 Python 版 meal_price_data.py 生成，请勿手改。
+// 每个 band 都是「该国当地」的 CNY 单笔花费：人均一餐 / 每间夜 / 人均门票。
+
+import java.util.Map;
+
+public final class MealPriceData {
+
+    private MealPriceData() {
+    }
+
+    /** 国家 -> 餐型 -> 价格带（人均一餐） */
+    public static final Map<String, Map<String, PriceBand>> MEAL_BANDS = Map.<String, Map<String, PriceBand>>ofEntries(
+            Map.entry("泰国", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(8, 12, 24)),
+                    Map.entry("breakfast", band(8, 13, 30)),
+                    Map.entry("fast_food", band(26, 36, 70)),
+                    Map.entry("ramen_noodles", band(10, 18, 36)),
+                    Map.entry("casual_local", band(20, 40, 90)),
+                    Map.entry("cafe_dessert", band(11, 22, 50)),
+                    Map.entry("sushi_kaiten", band(80, 96, 144)),
+                    Map.entry("sushi_mid", band(70, 120, 180)),
+                    Map.entry("sushi_fine", band(800, 1100, 1800)),
+                    Map.entry("bbq_grill", band(70, 110, 220)),
+                    Map.entry("izakaya_bar", band(70, 140, 300)),
+                    Map.entry("hotpot", band(44, 60, 140)),
+                    Map.entry("seafood", band(80, 160, 300)),
+                    Map.entry("fine_dining", band(500, 900, 1800)),
+                    Map.entry("generic", band(50, 100, 180))
+            )),
+            Map.entry("印度尼西亚", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(4, 11, 20)),
+                    Map.entry("breakfast", band(7, 18, 38)),
+                    Map.entry("fast_food", band(11, 18, 27)),
+                    Map.entry("ramen_noodles", band(9, 16, 27)),
+                    Map.entry("casual_local", band(11, 22, 54)),
+                    Map.entry("cafe_dessert", band(8, 20, 43)),
+                    Map.entry("sushi_kaiten", band(40, 81, 148)),
+                    Map.entry("sushi_mid", band(54, 99, 180)),
+                    Map.entry("sushi_fine", band(225, 450, 1125)),
+                    Map.entry("bbq_grill", band(20, 43, 112)),
+                    Map.entry("izakaya_bar", band(27, 54, 112)),
+                    Map.entry("hotpot", band(68, 99, 176)),
+                    Map.entry("seafood", band(45, 86, 158)),
+                    Map.entry("fine_dining", band(225, 439, 1125)),
+                    Map.entry("generic", band(34, 68, 135))
+            )),
+            Map.entry("美国", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(28, 71, 106)),
+                    Map.entry("breakfast", band(50, 114, 213)),
+                    Map.entry("fast_food", band(71, 99, 142)),
+                    Map.entry("ramen_noodles", band(85, 135, 199)),
+                    Map.entry("casual_local", band(85, 128, 199)),
+                    Map.entry("cafe_dessert", band(36, 71, 114)),
+                    Map.entry("sushi_kaiten", band(142, 234, 327)),
+                    Map.entry("sushi_mid", band(320, 639, 994)),
+                    Map.entry("sushi_fine", band(1065, 2130, 4260)),
+                    Map.entry("bbq_grill", band(426, 781, 1349)),
+                    Map.entry("izakaya_bar", band(284, 390, 532)),
+                    Map.entry("hotpot", band(213, 355, 568)),
+                    Map.entry("seafood", band(284, 532, 888)),
+                    Map.entry("fine_dining", band(1065, 2130, 3905)),
+                    Map.entry("generic", band(213, 390, 639))
+            )),
+            Map.entry("中国", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(5, 12, 25)),
+                    Map.entry("breakfast", band(5, 10, 20)),
+                    Map.entry("fast_food", band(25, 38, 50)),
+                    Map.entry("ramen_noodles", band(12, 20, 35)),
+                    Map.entry("casual_local", band(25, 45, 70)),
+                    Map.entry("cafe_dessert", band(10, 22, 40)),
+                    Map.entry("sushi_kaiten", band(60, 100, 150)),
+                    Map.entry("sushi_mid", band(150, 250, 400)),
+                    Map.entry("sushi_fine", band(400, 700, 1500)),
+                    Map.entry("bbq_grill", band(70, 100, 150)),
+                    Map.entry("izakaya_bar", band(100, 180, 350)),
+                    Map.entry("hotpot", band(70, 98, 180)),
+                    Map.entry("seafood", band(100, 200, 400)),
+                    Map.entry("fine_dining", band(300, 500, 800)),
+                    Map.entry("generic", band(30, 60, 128))
+            )),
+            Map.entry("日本", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(14, 38, 72)),
+                    Map.entry("breakfast", band(17, 31, 58)),
+                    Map.entry("fast_food", band(24, 38, 58)),
+                    Map.entry("ramen_noodles", band(34, 48, 72)),
+                    Map.entry("casual_local", band(38, 58, 96)),
+                    Map.entry("cafe_dessert", band(22, 38, 72)),
+                    Map.entry("sushi_kaiten", band(29, 55, 110)),
+                    Map.entry("sushi_mid", band(168, 264, 432)),
+                    Map.entry("sushi_fine", band(720, 1440, 2400)),
+                    Map.entry("bbq_grill", band(120, 192, 384)),
+                    Map.entry("hotpot", band(72, 158, 312)),
+                    Map.entry("seafood", band(58, 154, 336)),
+                    Map.entry("fine_dining", band(480, 1200, 2160)),
+                    Map.entry("generic", band(43, 77, 144))
+            )),
+            Map.entry("马来西亚", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(5, 10, 19)),
+                    Map.entry("breakfast", band(5, 13, 24)),
+                    Map.entry("fast_food", band(10, 26, 51)),
+                    Map.entry("ramen_noodles", band(10, 26, 42)),
+                    Map.entry("casual_local", band(10, 24, 48)),
+                    Map.entry("cafe_dessert", band(10, 24, 34)),
+                    Map.entry("sushi_kaiten", band(24, 56, 88)),
+                    Map.entry("sushi_mid", band(40, 61, 96)),
+                    Map.entry("bbq_grill", band(32, 56, 88)),
+                    Map.entry("izakaya_bar", band(40, 64, 112)),
+                    Map.entry("hotpot", band(48, 80, 128)),
+                    Map.entry("seafood", band(24, 48, 96)),
+                    Map.entry("fine_dining", band(240, 448, 1040)),
+                    Map.entry("generic", band(29, 48, 72))
+            )),
+            Map.entry("阿拉伯联合酋长国", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(15, 23, 48)),
+                    Map.entry("breakfast", band(15, 35, 68)),
+                    Map.entry("fast_food", band(23, 58, 87)),
+                    Map.entry("ramen_noodles", band(39, 68, 106)),
+                    Map.entry("casual_local", band(48, 87, 183)),
+                    Map.entry("cafe_dessert", band(23, 42, 87)),
+                    Map.entry("sushi_kaiten", band(87, 174, 290)),
+                    Map.entry("sushi_mid", band(135, 232, 386)),
+                    Map.entry("sushi_fine", band(386, 676, 1158)),
+                    Map.entry("bbq_grill", band(77, 154, 290)),
+                    Map.entry("izakaya_bar", band(193, 347, 579)),
+                    Map.entry("seafood", band(154, 309, 579)),
+                    Map.entry("fine_dining", band(347, 579, 965)),
+                    Map.entry("generic", band(48, 135, 347))
+            )),
+            Map.entry("新加坡", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(21, 32, 64)),
+                    Map.entry("breakfast", band(21, 37, 74)),
+                    Map.entry("fast_food", band(32, 58, 95)),
+                    Map.entry("ramen_noodles", band(26, 48, 95)),
+                    Map.entry("casual_local", band(32, 80, 186)),
+                    Map.entry("cafe_dessert", band(21, 48, 106)),
+                    Map.entry("sushi_kaiten", band(106, 175, 292)),
+                    Map.entry("sushi_mid", band(186, 318, 583)),
+                    Map.entry("sushi_fine", band(636, 1060, 2014)),
+                    Map.entry("izakaya_bar", band(132, 265, 530)),
+                    Map.entry("seafood", band(159, 318, 795)),
+                    Map.entry("fine_dining", band(424, 954, 1590)),
+                    Map.entry("generic", band(64, 132, 318))
+            )),
+            Map.entry("法国", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(31, 46, 70)),
+                    Map.entry("breakfast", band(39, 78, 124)),
+                    Map.entry("fast_food", band(39, 58, 85)),
+                    Map.entry("ramen_noodles", band(108, 132, 170)),
+                    Map.entry("casual_local", band(116, 170, 349)),
+                    Map.entry("cafe_dessert", band(16, 39, 93)),
+                    Map.entry("sushi_fine", band(1395, 1860, 2790)),
+                    Map.entry("bbq_grill", band(194, 349, 542)),
+                    Map.entry("izakaya_bar", band(271, 349, 465)),
+                    Map.entry("hotpot", band(217, 294, 388)),
+                    Map.entry("seafood", band(232, 426, 698)),
+                    Map.entry("fine_dining", band(1046, 1938, 3100)),
+                    Map.entry("generic", band(140, 271, 465))
+            )),
+            Map.entry("新西兰", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(31, 38, 73)),
+                    Map.entry("breakfast", band(28, 73, 80)),
+                    Map.entry("fast_food", band(65, 82, 101)),
+                    Map.entry("ramen_noodles", band(60, 77, 98)),
+                    Map.entry("casual_local", band(120, 142, 163)),
+                    Map.entry("cafe_dessert", band(24, 37, 47)),
+                    Map.entry("sushi_mid", band(90, 125, 292)),
+                    Map.entry("sushi_fine", band(516, 645, 774)),
+                    Map.entry("bbq_grill", band(211, 310, 404)),
+                    Map.entry("izakaya_bar", band(211, 280, 408)),
+                    Map.entry("seafood", band(95, 194, 366)),
+                    Map.entry("fine_dining", band(408, 710, 1118)),
+                    Map.entry("generic", band(120, 194, 258))
+            )),
+            Map.entry("韩国", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(15, 36, 66)),
+                    Map.entry("breakfast", band(20, 43, 76)),
+                    Map.entry("fast_food", band(31, 48, 76)),
+                    Map.entry("ramen_noodles", band(38, 51, 82)),
+                    Map.entry("casual_local", band(43, 59, 92)),
+                    Map.entry("cafe_dessert", band(23, 38, 71)),
+                    Map.entry("bbq_grill", band(76, 133, 230)),
+                    Map.entry("izakaya_bar", band(61, 128, 280)),
+                    Map.entry("hotpot", band(61, 97, 163)),
+                    Map.entry("seafood", band(76, 153, 306)),
+                    Map.entry("fine_dining", band(255, 510, 1020)),
+                    Map.entry("generic", band(36, 54, 92))
+            )),
+            Map.entry("土耳其", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(10, 32, 74)),
+                    Map.entry("breakfast", band(19, 94, 126)),
+                    Map.entry("fast_food", band(84, 103, 133)),
+                    Map.entry("casual_local", band(52, 94, 136)),
+                    Map.entry("cafe_dessert", band(21, 42, 74)),
+                    Map.entry("sushi_mid", band(136, 189, 294)),
+                    Map.entry("sushi_fine", band(525, 735, 1260)),
+                    Map.entry("bbq_grill", band(147, 210, 315)),
+                    Map.entry("izakaya_bar", band(168, 252, 378)),
+                    Map.entry("seafood", band(315, 525, 840)),
+                    Map.entry("fine_dining", band(1554, 1785, 3465)),
+                    Map.entry("generic", band(105, 168, 273))
+            )),
+            Map.entry("越南", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(4, 7, 11)),
+                    Map.entry("breakfast", band(7, 13, 18)),
+                    Map.entry("fast_food", band(28, 32, 36)),
+                    Map.entry("ramen_noodles", band(11, 17, 34)),
+                    Map.entry("casual_local", band(8, 14, 31)),
+                    Map.entry("cafe_dessert", band(9, 15, 25)),
+                    Map.entry("bbq_grill", band(56, 84, 139)),
+                    Map.entry("izakaya_bar", band(11, 20, 42)),
+                    Map.entry("hotpot", band(39, 98, 168)),
+                    Map.entry("seafood", band(28, 56, 112)),
+                    Map.entry("generic", band(28, 56, 98))
+            )),
+            Map.entry("英国", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(54, 81, 109)),
+                    Map.entry("breakfast", band(36, 100, 145)),
+                    Map.entry("fast_food", band(54, 81, 118)),
+                    Map.entry("casual_local", band(109, 163, 235)),
+                    Map.entry("cafe_dessert", band(36, 72, 136)),
+                    Map.entry("sushi_fine", band(1086, 1991, 2715)),
+                    Map.entry("bbq_grill", band(272, 543, 769)),
+                    Map.entry("izakaya_bar", band(181, 244, 317)),
+                    Map.entry("seafood", band(317, 724, 1086)),
+                    Map.entry("fine_dining", band(778, 1358, 2127)),
+                    Map.entry("generic", band(136, 253, 543))
+            )),
+            Map.entry("西班牙", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(23, 62, 108)),
+                    Map.entry("breakfast", band(23, 35, 50)),
+                    Map.entry("fast_food", band(70, 93, 112)),
+                    Map.entry("ramen_noodles", band(85, 105, 140)),
+                    Map.entry("casual_local", band(85, 115, 170)),
+                    Map.entry("cafe_dessert", band(12, 27, 46)),
+                    Map.entry("bbq_grill", band(140, 232, 388)),
+                    Map.entry("izakaya_bar", band(116, 271, 465)),
+                    Map.entry("seafood", band(93, 155, 232)),
+                    Map.entry("fine_dining", band(736, 1465, 2286)),
+                    Map.entry("generic", band(155, 248, 426))
+            )),
+            Map.entry("澳大利亚", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(42, 65, 102)),
+                    Map.entry("breakfast", band(42, 74, 93)),
+                    Map.entry("fast_food", band(42, 64, 86)),
+                    Map.entry("ramen_noodles", band(93, 107, 149)),
+                    Map.entry("casual_local", band(121, 149, 177)),
+                    Map.entry("cafe_dessert", band(30, 67, 91)),
+                    Map.entry("bbq_grill", band(84, 177, 228)),
+                    Map.entry("izakaya_bar", band(121, 172, 228)),
+                    Map.entry("seafood", band(58, 69, 106)),
+                    Map.entry("fine_dining", band(372, 651, 1162)),
+                    Map.entry("generic", band(116, 130, 177))
+            )),
+            Map.entry("香港", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(18, 46, 91)),
+                    Map.entry("breakfast", band(27, 46, 77)),
+                    Map.entry("fast_food", band(41, 46, 50)),
+                    Map.entry("ramen_noodles", band(46, 77, 136)),
+                    Map.entry("casual_local", band(41, 68, 127)),
+                    Map.entry("cafe_dessert", band(32, 59, 118)),
+                    Map.entry("izakaya_bar", band(91, 182, 364)),
+                    Map.entry("seafood", band(182, 364, 819)),
+                    Map.entry("fine_dining", band(455, 819, 1638)),
+                    Map.entry("generic", band(73, 136, 273))
+            )),
+            Map.entry("德国", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(23, 46, 70)),
+                    Map.entry("breakfast", band(46, 78, 116)),
+                    Map.entry("fast_food", band(39, 78, 93)),
+                    Map.entry("ramen_noodles", band(85, 116, 147)),
+                    Map.entry("casual_local", band(101, 155, 232)),
+                    Map.entry("cafe_dessert", band(23, 46, 78)),
+                    Map.entry("bbq_grill", band(232, 349, 542)),
+                    Map.entry("izakaya_bar", band(108, 155, 217)),
+                    Map.entry("fine_dining", band(1162, 1860, 2712)),
+                    Map.entry("generic", band(155, 248, 542))
+            )),
+            Map.entry("澳门", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(9, 21, 48)),
+                    Map.entry("breakfast", band(22, 40, 79)),
+                    Map.entry("fast_food", band(40, 42, 46)),
+                    Map.entry("casual_local", band(35, 62, 114)),
+                    Map.entry("cafe_dessert", band(9, 26, 62)),
+                    Map.entry("sushi_mid", band(158, 282, 572)),
+                    Map.entry("seafood", band(132, 264, 572)),
+                    Map.entry("fine_dining", band(528, 1056, 2200)),
+                    Map.entry("generic", band(62, 114, 229))
+            )),
+            Map.entry("台湾", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(13, 26, 55)),
+                    Map.entry("breakfast", band(12, 22, 44)),
+                    Map.entry("fast_food", band(26, 40, 77)),
+                    Map.entry("ramen_noodles", band(29, 44, 99)),
+                    Map.entry("casual_local", band(26, 44, 99)),
+                    Map.entry("cafe_dessert", band(26, 55, 110)),
+                    Map.entry("bbq_grill", band(143, 264, 550)),
+                    Map.entry("hotpot", band(99, 154, 330)),
+                    Map.entry("generic", band(40, 66, 132))
+            )),
+            Map.entry("意大利", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(19, 31, 46)),
+                    Map.entry("breakfast", band(19, 31, 62)),
+                    Map.entry("fast_food", band(54, 74, 101)),
+                    Map.entry("ramen_noodles", band(85, 108, 147)),
+                    Map.entry("casual_local", band(78, 124, 232)),
+                    Map.entry("cafe_dessert", band(9, 19, 39)),
+                    Map.entry("seafood", band(698, 1008, 1240)),
+                    Map.entry("fine_dining", band(1395, 2248, 2712)),
+                    Map.entry("generic", band(116, 232, 349))
+            )),
+            Map.entry("埃及", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(4, 7, 13)),
+                    Map.entry("breakfast", band(3, 6, 12)),
+                    Map.entry("fast_food", band(9, 23, 36)),
+                    Map.entry("casual_local", band(12, 19, 36)),
+                    Map.entry("cafe_dessert", band(4, 7, 13)),
+                    Map.entry("bbq_grill", band(14, 29, 65)),
+                    Map.entry("seafood", band(36, 65, 116)),
+                    Map.entry("fine_dining", band(72, 174, 362)),
+                    Map.entry("generic", band(9, 22, 51))
+            )),
+            Map.entry("瑞士", Map.<String, PriceBand>ofEntries(
+                    Map.entry("street_food", band(60, 71, 126)),
+                    Map.entry("breakfast", band(64, 128, 160)),
+                    Map.entry("casual_local", band(80, 120, 224)),
+                    Map.entry("cafe_dessert", band(16, 44, 104)),
+                    Map.entry("hotpot", band(176, 232, 280)),
+                    Map.entry("generic", band(256, 360, 560))
+            ))
+    );
+
+    /** 国家 -> 价格带（每间夜） */
+    public static final Map<String, PriceBand> HOTEL_BANDS = Map.<String, PriceBand>ofEntries(
+            Map.entry("日本", band(312, 1056, 2160)),
+            Map.entry("韩国", band(459, 1020, 2346)),
+            Map.entry("泰国", band(180, 480, 1300)),
+            Map.entry("新加坡", band(636, 1590, 3710)),
+            Map.entry("香港", band(410, 910, 2002)),
+            Map.entry("澳门", band(440, 792, 1364)),
+            Map.entry("台湾", band(352, 682, 1760)),
+            Map.entry("越南", band(112, 560, 1120)),
+            Map.entry("印度尼西亚", band(158, 540, 1350)),
+            Map.entry("马来西亚", band(128, 400, 1040)),
+            Map.entry("阿拉伯联合酋长国", band(482, 1117, 2316)),
+            Map.entry("美国", band(994, 2130, 4615)),
+            Map.entry("英国", band(869, 1629, 4163)),
+            Map.entry("法国", band(852, 1395, 3255)),
+            Map.entry("意大利", band(620, 1240, 3100)),
+            Map.entry("西班牙", band(542, 1511, 2325)),
+            Map.entry("德国", band(504, 1162, 2496)),
+            Map.entry("瑞士", band(1200, 1600, 4400)),
+            Map.entry("土耳其", band(525, 1050, 1890)),
+            Map.entry("埃及", band(217, 798, 2175)),
+            Map.entry("澳大利亚", band(604, 1023, 2325)),
+            Map.entry("新西兰", band(731, 1333, 2580)),
+            Map.entry("中国", band(250, 550, 1400))
+    );
+
+    /** 国家 -> 价格带（人均门票） */
+    public static final Map<String, PriceBand> ATTRACTION_BANDS = Map.<String, PriceBand>ofEntries(
+            Map.entry("日本", band(0, 86, 451)),
+            Map.entry("韩国", band(0, 26, 316)),
+            Map.entry("泰国", band(10, 100, 200)),
+            Map.entry("新加坡", band(0, 170, 466)),
+            Map.entry("香港", band(0, 91, 453)),
+            Map.entry("澳门", band(0, 183, 693)),
+            Map.entry("台湾", band(0, 77, 308)),
+            Map.entry("越南", band(8, 20, 266)),
+            Map.entry("印度尼西亚", band(22, 68, 284)),
+            Map.entry("马来西亚", band(0, 131, 317)),
+            Map.entry("阿拉伯联合酋长国", band(0, 345, 666)),
+            Map.entry("美国", band(0, 284, 1207)),
+            Map.entry("英国", band(0, 244, 308)),
+            Map.entry("法国", band(31, 170, 219)),
+            Map.entry("意大利", band(62, 124, 186)),
+            Map.entry("西班牙", band(16, 202, 302)),
+            Map.entry("德国", band(85, 124, 194)),
+            Map.entry("瑞士", band(136, 256, 496)),
+            Map.entry("土耳其", band(0, 278, 578)),
+            Map.entry("埃及", band(0, 80, 174)),
+            Map.entry("澳大利亚", band(0, 239, 391)),
+            Map.entry("新西兰", band(0, 172, 1045)),
+            Map.entry("中国", band(0, 60, 799))
+    );
+
+    private static PriceBand band(int low, int typical, int high) {
+        return new PriceBand(low, typical, high);
+    }
+}

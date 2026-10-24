@@ -1,0 +1,97 @@
+spring:
+  application:
+    name: travel-agent
+
+  datasource:
+    url: ${DB_URL:jdbc:mysql://127.0.0.1:3306/travel_agent?useUnicode=true&characterEncoding=utf8&connectionTimeZone=UTC&allowPublicKeyRetrieval=true&useSSL=false}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  jackson:
+    # 前端只认 snake_case（start_date / image_url / place_name ...）
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: always
+    serialization:
+      write-dates-as-timestamps: false
+
+  mvc:
+    # 未匹配的路径抛 NoHandlerFoundException，交给 GlobalExceptionHandler 输出
+    # {"detail": "Not Found"}，而不是 Spring 默认的错误页。
+    throw-exception-if-no-handler-found: true
+
+  web:
+    resources:
+      # 关掉默认的 /** -> classpath:/static/ 映射；/static/** 由 WebConfig 显式注册。
+      add-mappings: false
+
+  servlet:
+    multipart:
+      # 业务上限是 10 MiB；容器这里放宽，让"超过 10 MiB"由我们的代码回答
+      # 400「File size must not exceed 10 MiB.」，而不是容器先抛异常。
+      max-file-size: 10MB
+      max-request-size: 11MB
+
+  # Spring AI 只用它的 EmbeddingModel。注意 base-url 不带 /v1：
+  # Spring AI 会自己拼 /v1/embeddings（DashScope 兼容模式接受这个路径）。
+  ai:
+    openai:
+      base-url: ${SPRING_AI_OPENAI_BASE_URL:https://dashscope.aliyuncs.com/compatible-mode}
+      api-key: ${DASHSCOPE_API_KEY:not-configured}
+      embedding:
+        options:
+          model: ${EMBEDDING_MODEL_NAME:text-embedding-v4}
+
+server:
+  port: ${SERVER_PORT:8001}
+  error:
+    whitelabel:
+      enabled: false
+
+app:
+  auth:
+    # 不设置时用内置开发密钥（与原项目一致）：token 永远签得出来，
+    # 但源码公开意味着任何人都能给任意账号签 token，生产必须设置。
+    secret-key: ${AUTH_SECRET_KEY:}
+    token-ttl-seconds: 2592000
+  dashscope:
+    api-key: ${DASHSCOPE_API_KEY:}
+    base-url: ${DASHSCOPE_BASE_URL:https://dashscope.aliyuncs.com/compatible-mode/v1}
+    planning-model: ${PLANNING_MODEL_NAME:qwen3.7-plus}
+    vision-model: ${VISION_MODEL_NAME:qwen3-vl-plus}
+    embedding-model: ${EMBEDDING_MODEL_NAME:text-embedding-v4}
+    embedding-dim: 1024
+  storage:
+    # 数据库里 file_path 存的是相对这个目录的路径
+    project-root: ${TRAVEL_AGENT_PROJECT_ROOT:.}
+  vector:
+    # auto：先连 Milvus，连不上退到 MySQL 精确余弦；milvus：严格使用，不降级
+    backend: ${VECTOR_BACKEND:auto}
+    host: ${MILVUS_HOST:127.0.0.1}
+    port: ${MILVUS_PORT:19530}
+    collection: trip_documents
+    dim: 1024
+    connect-timeout-ms: 3000
+  pexels:
+    # 不填就只有内置占位图，不影响规划本身
+    api-key: ${PEXELS_API_KEY:}
+  planning-job:
+    workers: ${PLANNING_JOB_WORKERS:2}
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+
+logging:
+  level:
+    root: INFO
+    com.huxizhen.travel: INFO

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Attraction placeholder">
+  <defs>
+    <linearGradient id="sightBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2f5d7c"/>
+      <stop offset="1" stop-color="#79a8c4"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#sightBg)"/>
+  <circle cx="452" cy="140" r="42" fill="#ffffff" opacity="0.85"/>
+  <g fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.94">
+    <path d="M150 300l112-140 84 104 58-70 86 106Z"/>
+    <path d="M120 300h400"/>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Sushi placeholder">
+  <defs>
+    <linearGradient id="sushiBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f5d55"/>
+      <stop offset="1" stop-color="#5aa79b"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#sushiBg)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.94">
+    <rect x="180" y="248" width="118" height="66" rx="33"/>
+    <path d="M180 268c22-22 74-22 118 0"/>
+    <rect x="342" y="248" width="118" height="66" rx="33"/>
+    <path d="M342 268c22-22 74-22 118 0"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" opacity="0.9">
+    <circle cx="320" cy="160" r="52"/>
+    <circle cx="320" cy="160" r="20"/>
+  </g>
+</svg>

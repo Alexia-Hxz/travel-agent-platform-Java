@@ -1,0 +1,44 @@
+# Python（原项目的残留规则，保留以便共存）
+.venv/
+.venv-ocr/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Java / Maven
+backend/target/
+target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# Node.js
+frontend/node_modules/
+frontend/dist/
+.tmp-build/
+
+# 本地数据与密钥（永远不进仓库）
+.env
+.env.*
+!*.example
+backend/data/
+data/uploads/*
+!data/uploads/.gitkeep
+data/photo-cache/
+data/chroma/*
+data/paddleocr/
+data/paddlex/
+tmp/
+backend/travel_agent.db
+
+# 编辑器与系统文件
+.vscode/settings.json
+.idea/
+Thumbs.db
+.DS_Store
+
+# 测试残留
+backend/travel-agent-tests-*/
+backend/pytest-of-*/
+backend/vecprobe_*/

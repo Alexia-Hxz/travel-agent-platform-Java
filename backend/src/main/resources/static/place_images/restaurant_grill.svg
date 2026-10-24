@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Grilled dish placeholder">
+  <defs>
+    <linearGradient id="grillBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5c2a22"/>
+      <stop offset="1" stop-color="#b0614a"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#grillBg)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.94">
+    <path d="M170 262h300"/>
+    <path d="M196 262v58"/>
+    <path d="M444 262v58"/>
+    <path d="M228 320h184"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" opacity="0.9">
+    <path d="M248 240l-30-116"/>
+    <path d="M320 240l0-124"/>
+    <path d="M392 240l30-116"/>
+  </g>
+  <g fill="#ffffff" opacity="0.9">
+    <rect x="216" y="158" width="46" height="30" rx="12"/>
+    <rect x="298" y="150" width="46" height="30" rx="12"/>
+    <rect x="378" y="158" width="46" height="30" rx="12"/>
+  </g>
+</svg>
